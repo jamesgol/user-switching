@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: User Switching
-Description: Instant switching between user accounts in WordPress
+Plugin Name: User Switching MU
+Description: Instant switching between user accounts in WPMU
 Version:     0.9
 Plugin URI:  https://johnblackbourn.com/wordpress-plugin-user-switching/
 Author:      John Blackbourn
@@ -38,7 +38,7 @@ class user_switching {
 		add_filter( 'user_row_actions',                array( $this, 'filter_user_row_actions' ), 10, 2 );
 		add_action( 'plugins_loaded',                  array( $this, 'action_plugins_loaded' ) );
 		add_action( 'init',                            array( $this, 'action_init' ) );
-		add_action( 'all_admin_notices',               array( $this, 'action_admin_notices' ), 1 );
+		add_action( 'admin_notices',                   array( $this, 'action_admin_notices' ), 1 );
 		add_action( 'wp_logout',                       'wp_clear_olduser_cookie' );
 		add_action( 'wp_login',                        'wp_clear_olduser_cookie' );
 
@@ -77,7 +77,7 @@ class user_switching {
 
 		?>
 		<tr>
-			<th scope="row"><?php _ex( 'User Switching', 'User Switching title on user profile screen', 'user-switching' ); ?></th>
+			<th scope="row"><?php _e( 'User Switching', 'user-switching' ); ?></th>
 			<td><a href="<?php echo $link; ?>"><?php _e( 'Switch&nbsp;To', 'user-switching' ); ?></a></td>
 		</tr>
 		<?php
@@ -199,7 +199,7 @@ class user_switching {
 	 * @param WP_User|null A WP_User object (optional).
 	 * @return string      The URL to redirect to.
 	 */
-	protected static function get_redirect( WP_User $user = null ) {
+	protected static function get_redirect( stdClass $user = null ) {
 
 		if ( isset( $_REQUEST['redirect_to'] ) and !empty( $_REQUEST['redirect_to'] ) ) {
 			$redirect_to = self::remove_query_args( $_REQUEST['redirect_to'] );
@@ -332,7 +332,9 @@ class user_switching {
 	 */
 	public function action_wp_footer() {
 
-		if ( !is_admin_bar_showing() and $old_user = self::get_old_user() ) {
+		$show = function_exists( 'is_admin_bar_showing' ) ? !is_admin_bar_showing() : true;
+
+		if ( $show and $old_user = self::get_old_user() ) {
 			$link = sprintf( __( 'Switch back to %1$s (%2$s)', 'user-switching' ), $old_user->display_name, $old_user->user_login );
 			$url = add_query_arg( array(
 				'redirect_to' => urlencode( self::current_url() )
@@ -489,7 +491,7 @@ class user_switching {
 	 * @param  WP_User $user The old user.
 	 * @return string The required URL
 	 */
-	public static function switch_back_url( WP_User $user ) {
+	public static function switch_back_url( stdClass $user ) {
 		return wp_nonce_url( add_query_arg( array(
 			'action' => 'switch_to_olduser'
 		), wp_login_url() ), "switch_to_olduser_{$user->ID}" );
@@ -550,9 +552,9 @@ class user_switching {
 	 */
 	public function filter_user_has_cap( array $user_caps, array $required_caps, array $args ) {
 		if ( 'switch_to_user' == $args[0] ) {
-			$user_caps['switch_to_user'] = ( user_can( $args[1], 'edit_user', $args[2] ) and ( $args[2] != $args[1] ) );
+			$user_caps['switch_to_user'] = ( current_user_can( 'edit_user', $args[2] ) and ( $args[2] != $args[1] ) );
 		} else if ( 'switch_off' == $args[0] ) {
-			$user_caps['switch_off'] = user_can( $args[1], 'edit_users' );
+			$user_caps['switch_off'] = current_user_can( 'edit_users' );
 		}
 		return $user_caps;
 	}
