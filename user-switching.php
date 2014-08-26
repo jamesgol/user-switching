@@ -45,6 +45,7 @@ class user_switching {
 		# Nice-to-haves:
 		add_filter( 'ms_user_row_actions',             array( $this, 'filter_user_row_actions' ), 10, 2 );
 		add_filter( 'login_message',                   array( $this, 'filter_login_message' ), 1 );
+		add_filter( 'wp_stream_connectors',            array( $this, 'filter_wp_stream_connectors' ) );
 		add_action( 'wp_footer',                       array( $this, 'action_wp_footer' ) );
 		add_action( 'personal_options',                array( $this, 'action_personal_options' ) );
 		add_action( 'admin_bar_menu',                  array( $this, 'action_admin_bar_menu' ), 11 );
@@ -498,6 +499,15 @@ class user_switching {
 
 	}
 
+	public function filter_wp_stream_connectors( array $connectors ) {
+		$file = dirname( __FILE__ ) . '/wp-stream.php';
+		if ( file_exists( $file ) ) {
+			include $file;
+			$connectors[] = 'WP_Stream_Connector_User_Switching';
+		}
+		return $connectors;
+	}
+
 	/**
 	 * Helper function. Returns the switch to or switch back URL for a given user.
 	 *
@@ -775,6 +785,12 @@ function switch_to_user( $user_id, $remember = false, $set_old_user = true ) {
 		user_switching_clear_olduser_cookie( false );
 	}
 
+	if ( $set_old_user ) {
+		do_action( 'pre_switch_to_user', $user_id, $old_user_id );
+	} else {
+		do_action( 'pre_switch_back_user', $user_id, $old_user_id );
+	}
+
 	wp_clear_auth_cookie();
 	wp_set_auth_cookie( $user_id, $remember );
 	wp_set_current_user( $user_id );
@@ -800,6 +816,8 @@ function switch_off_user() {
 	if ( !$old_user_id = get_current_user_id() ) {
 		return false;
 	}
+
+	do_action( 'pre_switch_off_user', $old_user_id );
 
 	user_switching_set_olduser_cookie( $old_user_id );
 	wp_clear_auth_cookie();
