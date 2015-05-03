@@ -26,7 +26,7 @@ travis:
         - UserSwitchingContext
   extensions:
     Johnbillion\WordPressExtension:
-      path: '/etc/wordpress'
+      path: '/tmp/wordpress'
       connection:
         db: 'wordpress_test'
         username: 'root'
