@@ -3,9 +3,9 @@
 # PHP_VERSION=$(phpenv version-name)
 
 # if [ $PHP_VERSION == '5.2' ]; then 
-# 	CONF_NAME='nginx.52.conf'
+# 	CONF_NAME='../ci/nginx.52.conf'
 # else
-	CONF_NAME='nginx.conf'
+	CONF_NAME='../ci/nginx.conf'
 # fi
 
 apt-get install nginx
