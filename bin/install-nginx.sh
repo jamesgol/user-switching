@@ -10,5 +10,5 @@
 
 apt-get install nginx
 cp $CONF_NAME /etc/nginx/nginx.conf
-echo "127.0.0.1 example.org" | sudo tee -a /etc/hosts
+echo "127.0.0.1 example.org" >> /etc/hosts
 /etc/init.d/nginx restart
