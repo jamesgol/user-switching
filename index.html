@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>User Switching by johnbillion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">User Switching</h1>
+      <h2 class="project-tagline">WordPress plugin that provides instant switching between user accounts</h2>
+      <a href="https://github.com/johnbillion/user-switching" class="btn">View on GitHub</a>
+      <a href="https://github.com/johnbillion/user-switching/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/johnbillion/user-switching/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><a href="https://wordpress.org/plugins/user-switching/"><img src="https://img.shields.io/wordpress/plugin/v/user-switching.svg" alt="WordPress Plugin Version"></a>
+<a href="http://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/badge/license-GPL_v2%2B-blue.svg" alt="License"></a>
+<a href="https://wordpress.org/plugins/user-switching/"><img src="https://img.shields.io/wordpress/v/user-switching.svg" alt="WordPress Tested"></a>
+<a href="https://travis-ci.org/johnbillion/user-switching"><img src="https://img.shields.io/travis/johnbillion/user-switching.svg" alt="Build Status"></a></p>
+
+<h1>
+<a id="user-switching" class="anchor" href="#user-switching" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Switching</h1>
+
+<p>This WordPress plugin allows you to quickly swap between user accounts in WordPress at the click of a button. You'll be instantly logged out and logged in as your desired user. This is handy for test environments where you regularly log out and in between different accounts, or for administrators who need to switch between multiple accounts.</p>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Switch user: Instantly switch to any user account from the <em>Users</em> screen.</li>
+<li>Switch back: Instantly switch back to your originating account.</li>
+<li>Switch off: Log out of your account but retain the ability to instantly switch back in again.</li>
+<li>It's completely secure (see the <em>Security</em> section below).</li>
+<li>Compatible with WordPress, WordPress Multisite, BuddyPress and bbPress.</li>
+</ul>
+
+<h3>
+<a id="security" class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h3>
+
+<ul>
+<li>Only users with the ability to edit other users can switch user accounts. By default this is only Administrators on single site installs, and Super Admins on Multisite installs.</li>
+<li>Passwords are not (and cannot be) revealed.</li>
+<li>Uses the cookie authentication system in WordPress when remembering the account(s) you've switched from and when switching back.</li>
+<li>Implements the nonce security system in WordPress, meaning only those who intend to switch users can switch.</li>
+<li>Full support for administration over SSL (if applicable).</li>
+</ul>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<ol>
+<li>Visit the <em>Users</em> menu in WordPress and you'll see a <em>Switch To</em> link next to each user.</li>
+<li>Click this and you will immediately switch into that user account.</li>
+<li>You can switch back to your originating account via the <em>Switch back</em> link on each dashboard screen or in your profile menu in the WordPress toolbar.</li>
+</ol>
+
+<p>See the <a href="#frequently-asked-questions">FAQ</a> for information about the <em>Switch Off</em> feature.</p>
+
+<h3>
+<a id="translations-included" class="anchor" href="#translations-included" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translations Included</h3>
+
+<ul>
+<li>العربية (Arabic)</li>
+<li>Български (Bulgarian)</li>
+<li>中文 (Chinese Simplified)</li>
+<li>Hrvatski (Croatian)</li>
+<li>Nederlands (Dutch)</li>
+<li>Suomi (Finnish)</li>
+<li>Français (French)</li>
+<li>Deutsch (German)</li>
+<li>Ελληνικά (Greek)</li>
+<li>עִבְרִית (Hebrew)</li>
+<li>Bahasa Indonesia (Indonesian)</li>
+<li>Italiano (Italian)</li>
+<li>日本語 (Japanese)</li>
+<li>Lietuvių kalba (Lithuanian)</li>
+<li>Norsk bokmål (Norwegian)</li>
+<li>فارسی (Persian)</li>
+<li>Polski (Polish)</li>
+<li>Português do Brasil (Brazilian Portuguese)</li>
+<li>Română (Romanian)</li>
+<li>Русский (Russian)</li>
+<li>Slovenčina (Slovak)</li>
+<li>Español (Spanish)</li>
+<li>Türkçe (Turkish)</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install this plugin directly from your WordPress dashboard:</p>
+
+<ol>
+<li>Go to the <em>Plugins</em> menu and click <em>Add New</em>.</li>
+<li>Search for <em>User Switching</em>.</li>
+<li>Click <em>Install Now</em> next to the <em>User Switching</em> plugin.</li>
+<li>Activate the plugin.</li>
+</ol>
+
+<h2>
+<a id="frequently-asked-questions" class="anchor" href="#frequently-asked-questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Frequently Asked Questions</h2>
+
+<h3>
+<a id="what-does-switch-off-mean" class="anchor" href="#what-does-switch-off-mean" aria-hidden="true"><span class="octicon octicon-link"></span></a>What does "Switch off" mean?</h3>
+
+<p>Switching off logs you out of your account but retains your user ID in an authentication cookie so you can switch straight back without having to log in again manually. It's akin to switching to no user, and being able to switch back.</p>
+
+<p>The <em>Switch Off</em> link can be found in your profile menu in the WordPress toolbar. Once you've switched off you'll see a <em>Switch back</em> link in the footer of your site.</p>
+
+<h3>
+<a id="does-this-plugin-work-with-wordpress-multisite" class="anchor" href="#does-this-plugin-work-with-wordpress-multisite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Does this plugin work with WordPress Multisite?</h3>
+
+<p>Yes, and you'll also be able to switch users from the Users screen in Network Admin.</p>
+
+<h3>
+<a id="does-this-plugin-work-with-buddypress" class="anchor" href="#does-this-plugin-work-with-buddypress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Does this plugin work with BuddyPress?</h3>
+
+<p>Yes, and you'll also be able to switch users from member profile screens and the member listing screen.</p>
+
+<h3>
+<a id="does-this-plugin-work-with-bbpress" class="anchor" href="#does-this-plugin-work-with-bbpress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Does this plugin work with bbPress?</h3>
+
+<p>Yes, and you'll also be able to switch users from member profile screens.</p>
+
+<h3>
+<a id="does-this-work-as-a-mu-plugin" class="anchor" href="#does-this-work-as-a-mu-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Does this work as a mu-plugin?</h3>
+
+<p>Yes, but you'll need to install <code>user-switching.php</code> into the root of your <code>mu-plugins</code> directory, not in the <code>user-switching</code> subdirectory. This is a restriction of WordPress.</p>
+
+<h3>
+<a id="what-capability-does-a-user-need-in-order-to-switch-accounts" class="anchor" href="#what-capability-does-a-user-need-in-order-to-switch-accounts" aria-hidden="true"><span class="octicon octicon-link"></span></a>What capability does a user need in order to switch accounts?</h3>
+
+<p>A user needs the <code>edit_users</code> capability in order to switch user accounts. By default only Administrators have this capability, and with Multisite enabled only Super Admins have this capability.</p>
+
+<h3>
+<a id="can-regular-admins-on-multisite-installs-switch-accounts" class="anchor" href="#can-regular-admins-on-multisite-installs-switch-accounts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can regular admins on Multisite installs switch accounts?</h3>
+
+<p>No. This can be enabled though by installing the <a href="https://github.com/johnbillion/user-switching-for-regular-admins">User Switching for Regular Admins</a> plugin.</p>
+
+<h3>
+<a id="are-any-plugin-hooks-called-when-users-switch-accounts" class="anchor" href="#are-any-plugin-hooks-called-when-users-switch-accounts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Are any plugin hooks called when users switch accounts?</h3>
+
+<p>Yes. When a user switches to another account, the <code>switch_to_user</code> hook is called with the new and old user IDs passed as parameters.</p>
+
+<p>When a user switches back to their original account, the <code>switch_back_user</code> hook is called with the new (original) and old user IDs passed as parameters. Note that the old user ID can be boolean false if the user is switching back after they've been switched off.</p>
+
+<p>When a user switches off, the <code>switch_off_user</code> hook is called with the old user ID as a parameter.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/johnbillion/user-switching">User Switching</a> is maintained by <a href="https://github.com/johnbillion">johnbillion</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
